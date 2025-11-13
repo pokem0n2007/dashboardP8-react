@@ -1,35 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import Profile from "./components/Profile";
+import Cards from "./components/Cards";
+import "./styles.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+const data = [
+  {
+    "title": "Work",
+    "timeframes": {
+      "daily": { "current": 5, "previous": 7 },
+      "weekly": { "current": 32, "previous": 36 }
+    }
+  },
+  {
+    "title": "Play",
+    "timeframes": {
+      "daily": { "current": 1, "previous": 2 },
+      "weekly": { "current": 10, "previous": 8 }
+    }
+  },
+  {
+    "title": "Study",
+    "timeframes": {
+      "daily": { "current": 0, "previous": 1 },
+      "weekly": { "current": 4, "previous": 7 }
+    }
+  },
+  {
+    "title": "Exercise",
+    "timeframes": {
+      "daily": { "current": 1, "previous": 1 },
+      "weekly": { "current": 4, "previous": 5 }
+    }
+  },
+  {
+    "title": "Social",
+    "timeframes": {
+      "daily": { "current": 1, "previous": 3 },
+      "weekly": { "current": 5, "previous": 10 }
+    }
+  },
+  {
+    "title": "Self Care",
+    "timeframes": {
+      "daily": { "current": 0, "previous": 1 },
+      "weekly": { "current": 2, "previous": 2 }
+    }
+  }
+]
+
+export default function App() {
+  const [currentView, setCurrentView] = useState("daily");
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <main className="dashboard">
+      <Profile currentView={currentView} setCurrentView={setCurrentView} />
+      <Cards data={data} currentView={currentView} />
+    </main>
+  );
 }
-
-export default App
