@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "/dashboardP8-react/",
+  "homepage": "https://pokem0n2007.github.io/dashboardP8-react/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
